@@ -8,13 +8,14 @@ const PaymentInformationPage = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    fetch('http://localhost:3000/test', {
-      method: 'POST',
+    fetch('http://localhost:3000/init', {
+      method: 'get',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
-    });
+    })
+      .then((res) => res.json())
+      .then((result) => window.location.replace(result.url));
   };
 
   return (
